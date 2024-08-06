@@ -1,0 +1,25 @@
+Docker_tasks & Dockerization a nodejs project 
+
+**Problem1** 
+1-running a container nginx with 2 volume mounting 
+one for containing nginx configrations
+and the other for nginx home directory 
+
+1)sudo docker run --name my-nginx -d -v static-file:/home -v nginx-config:/etc nginx
+
+2-adding html file of nginx to its home directory
+2)sudo doker exec -it my-nginx  /bin/bash 
+  cd home/
+  apt update && apt install wget && apt install vim
+  wget nginx 
+
+3-stop and remove the container
+3)sudo docker stop my-nginx
+  sudo docker rm my-nginx
+
+4-mount volume using 2 different ways 
+4)*volume mount: sudo docker run --name my-nginx -d -v static-file:/home -v nginx-config:/etc nginx
+  *bind mount  : sudo docker run --name my-nginx -d -v /home/ebrahim/doc-static-nginx:/home -v /home/ebrahim/nginx-config:/etc nginx
+             
+  *sudo docker run -d -p8080:80 nginx 
+ 
